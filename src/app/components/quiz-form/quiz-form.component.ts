@@ -1,4 +1,7 @@
+import { Quiz } from '../../datamodel/quiz';
+import { QuizService } from '../../services/quiz.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz-form',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizFormComponent implements OnInit {
 
-  constructor() { }
+  quizes: Quiz[];
+
+  constructor(private quizService: QuizService, private router: Router) { }
 
   ngOnInit() {
+    // Initialize quizes
+    this.quizes = this.quizService.getAllQuizes();
+  }
+
+   editQuiz() {
+    this.router.navigate(['questions-selected']);
+    // this.router.navigate(['form']);
   }
 
 }
