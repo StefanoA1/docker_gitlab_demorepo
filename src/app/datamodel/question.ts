@@ -5,10 +5,10 @@ export class Question {
   tags: string[];
 
   constructor(id: number, title: string, difficulty: number, tags: string[] ) {
-    this.difficulty = difficulty;
-    this.title = title;
-    this.tags = tags;
     this.id = id;
+    this.title = title;
+    this.difficulty = difficulty;
+    this.tags = tags;
 
   }
 }

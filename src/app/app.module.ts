@@ -8,6 +8,7 @@ import {QuestionFormComponent} from './components/question-form/question-form.co
 import {QuestionlistComponent} from './components/questionlist/questionlist.component';
 import {QuestionService} from './services/question.service';
 import { QuestionsSelectedComponent } from './components/questions-selected/questions-selected.component';
+import { QuizFormComponent } from './components/quiz-form/quiz-form.component';
 
 
 
@@ -16,7 +17,8 @@ import { QuestionsSelectedComponent } from './components/questions-selected/ques
     AppComponent,
     QuestionlistComponent,
     QuestionFormComponent,
-    QuestionsSelectedComponent
+    QuestionsSelectedComponent,
+    QuizFormComponent
   ],
   imports: [
     BrowserModule,
