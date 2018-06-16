@@ -1,0 +1,88 @@
+<!--<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>-->
+<!--
+<div class="jumbotron text-center">
+	<h1>My First Bootstrap Page</h1>
+	<p>Resize this responsive page to see the effect!</p>
+</div>
+-->
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="column left">
+				<h3>Selected questions</h3>
+				<table>
+					<thead>
+						<tr>
+							<th>title</th>
+							<th>difficulty</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr
+							*ngFor="let question of selected_questions; let i = index; let even = even; let odd = odd"
+							[ngClass]="{ odd: odd, even: even }">
+<!-- 							<td>{{question.id}}</td> -->
+							<td>{{question.title}}</td>
+							<td>{{question.difficulty}}</td>
+							<td><button (click)="putInAvailable(question,i)">Remove</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="column middle">
+				<h3>Column 2</h3>
+				<p>BLANK SPACE</p>
+			</div>
+			<div class="column rigth">
+				<h3>Available Questions</h3>
+				<table>
+					<thead>
+						<tr>
+							<th>title</th>
+							<th>difficulty</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr
+							*ngFor="let question of available_questions; let i = index; let even = even; let odd = odd"
+							[ngClass]="{ odd: odd, even: even }">
+							<!--
+							<td><button (click)="questions.splice(i, 1)">
+							 {{question.title}}&emsp;&emsp;&emsp;{{question.difficulty}}</button> </td>-->
+							<!--  -->
+<!-- 							<td>{{question.id}}</td> -->
+							<td>{{question.title}}</td>
+							<td>{{question.difficulty}}</td>
+<!-- 							<td><button (click)="selected_questions.push(question)">Push</button></td> -->
+<!-- 							<td><button (click)="available_questions.splice(i, 1)">Add</button></td> -->
+							<td><button (click)="putInSelected(question, i)">&ensp;Add&ensp;</button></td>
+						</tr>
+					</tbody>
+				</table>
+				
+			</div>
+		</div>
+	</div>
+	<!--
+<table>
+	<thead>
+		<tr>
+			<th>title</th>
+			<th>difficulty</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let question of questions">
+			<td>{{question.title}}</td>
+			<td>{{question.difficulty}}</td>
+			<td><button>Delete</button></td>
+		</tr>
+	
+	</tbody>
+
+</table>
+ -->
+	<button (click)="goToQuestion()">Create a new question</button>
+</body>

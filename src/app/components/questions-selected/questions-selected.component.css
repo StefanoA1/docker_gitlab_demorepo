@@ -1,0 +1,38 @@
+/*
+.column {
+    float: left;
+    width: 33.33%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+*/
+
+/* Create three unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 10px;
+}
+
+.left, .right {
+  width: 35%;
+  min-width: 180px;
+}º
+
+.middle {
+  width: 30%;
+  min-width: 90px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.even {
+	background-color: highlight;
+}
