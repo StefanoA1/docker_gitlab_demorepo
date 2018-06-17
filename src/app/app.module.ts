@@ -10,6 +10,8 @@ import { QuestionService } from './services/question.service';
 import { QuestionsSelectedComponent } from './components/questions-selected/questions-selected.component';
 import { QuizFormComponent } from './components/quiz-form/quiz-form.component';
 import { QuizService } from './services/quiz.service';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { HomeFormComponent } from './components/home-form/home-form.component';
 
 
 
@@ -19,7 +21,9 @@ import { QuizService } from './services/quiz.service';
     QuestionlistComponent,
     QuestionFormComponent,
     QuestionsSelectedComponent,
-    QuizFormComponent
+    QuizFormComponent,
+    LoginFormComponent,
+    HomeFormComponent
   ],
   imports: [
     BrowserModule,
