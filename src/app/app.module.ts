@@ -12,6 +12,8 @@ import { QuizFormComponent } from './components/quiz-form/quiz-form.component';
 import { QuizService } from './services/quiz.service';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { HomeFormComponent } from './components/home-form/home-form.component';
+import { CustomMaterialModule } from './material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -28,6 +30,8 @@ import { HomeFormComponent } from './components/home-form/home-form.component';
   imports: [
     BrowserModule,
     FormsModule,
+    BrowserAnimationsModule,
+    CustomMaterialModule,
     router
   ],
   providers: [

@@ -9,6 +9,7 @@ import { QuizFormComponent } from './components/quiz-form/quiz-form.component';
 import { Question } from './datamodel/question';
 import { QuestionToken } from 'typescript';
 import { Quiz } from './datamodel/quiz';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 // import { QuizToken } from 'typescript';
 
 const appRoutes: Routes = [
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
   {path: '', component: QuestionlistComponent},
   {path: 'questions', component: QuestionlistComponent},
   {path: 'questions-selected', component: QuestionsSelectedComponent},
+  {path: 'login', component: LoginFormComponent},
   {path: 'quizes', component: QuizFormComponent}
 
 
