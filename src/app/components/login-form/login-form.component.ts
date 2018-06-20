@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {MatDialog} from '@angular/material';
-// import { CustomMaterialModule } from '@angular/material.module';
+import {AuthenticationService} from '../../services/authentication.service';
+import {TokenStorage} from '../../services/token.storage';
 
 @Component({
   selector: 'app-login-form',
@@ -10,18 +11,31 @@ import {MatDialog} from '@angular/material';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor( private router: Router, public dialog: MatDialog ) {
+  constructor( private router: Router, public dialog: MatDialog,
+    private authenticationService: AuthenticationService, private token: TokenStorage ) {
   }
 
   username: string;
   password: string;
 
   login(): void {
+
+
+    /*
     if ( this.username === 'admin' && this.password === 'admin' ) {
      this.router.navigate(['user']);
     } else {
       alert('Invalid credentials');
-    }
+    }*/
+
+
+    this.authenticationService.attemptAuthentication(this.username, this.password).subscribe(
+      data => {
+        this.token.saveToken(data.token);
+        this.router.navigate(['user']);
+      }
+    );
+
   }
 
   ngOnInit() {

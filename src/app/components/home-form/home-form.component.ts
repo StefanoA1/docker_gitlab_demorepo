@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-form',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  goToQuizes() {
+    // this.router.navigate(['questions-selected']);
+    this.router.navigate(['quizes']);
+  }
+
+  goToQuestions() {
+    // this.router.navigate(['questions-selected']);
+    this.router.navigate(['new-question']);
   }
 
 }

@@ -1,6 +1,7 @@
 import {Routes, RouterModule} from '@angular/router';
 
 import {AppComponent} from './app.component';
+import { HomeFormComponent } from './components/home-form/home-form.component';
 import { QuestionFormComponent } from './components/question-form/question-form.component';
 import { QuestionlistComponent } from './components/questionlist/questionlist.component';
 import { QuestionsSelectedComponent } from './components/questions-selected/questions-selected.component';
@@ -13,12 +14,14 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 // import { QuizToken } from 'typescript';
 
 const appRoutes: Routes = [
-  {path: 'form', component: QuestionFormComponent},
+  {path: 'new-question', component: QuestionFormComponent},
   {path: '', component: QuestionlistComponent},
   {path: 'questions', component: QuestionlistComponent},
   {path: 'questions-selected', component: QuestionsSelectedComponent},
   {path: 'login', component: LoginFormComponent},
-  {path: 'quizes', component: QuizFormComponent}
+  //{path: '', component: LoginFormComponent},
+  {path: 'quizes', component: QuizFormComponent},
+  {path: 'home', component: HomeFormComponent}
 
 
 ];

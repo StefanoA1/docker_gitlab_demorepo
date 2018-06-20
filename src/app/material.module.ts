@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatToolbarModule, 
+import { MatButtonModule, MatToolbarModule,
   MatCardModule, MatSpinner, MatFormField, MatInputModule, MatDialogModule, MatTableModule } from '@angular/material';
 
 const modules = [

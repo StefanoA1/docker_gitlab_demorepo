@@ -13,6 +13,11 @@ import { QuizService } from './services/quiz.service';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { HomeFormComponent } from './components/home-form/home-form.component';
 import { CustomMaterialModule } from './material.module';
+import { AuthenticationService } from './services/authentication.service';
+import { Interceptor } from './services/interceptor';
+import { TokenStorage } from './services/token.storage';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -29,6 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
     CustomMaterialModule,
@@ -36,7 +42,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   providers: [
     QuestionService,
-    QuizService
+    QuizService,
+    AuthenticationService,
+    TokenStorage,
+    {provide: HTTP_INTERCEPTORS,
+    useClass: Interceptor,
+    multi : true}
   ],
   bootstrap: [AppComponent]
 })
