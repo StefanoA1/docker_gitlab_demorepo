@@ -32,7 +32,7 @@ export class LoginFormComponent implements OnInit {
     this.authenticationService.attemptAuthentication(this.username, this.password).subscribe(
       data => {
         this.token.saveToken(data.token);
-        this.router.navigate(['user']);
+        this.router.navigate(['home']);
       }
     );
 

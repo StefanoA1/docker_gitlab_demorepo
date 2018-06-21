@@ -1,11 +1,11 @@
 export class User {
   name: String;
-  lastName: String;
+  userName: String;
   id: number;
 
-  constructor(name: String, lastName: String, id: number) {
+  constructor(name: String, userName: String, id: number) {
     this.name = name;
-    this.lastName = lastName;
+    this.userName = userName;
     this.id = id;
 
   }

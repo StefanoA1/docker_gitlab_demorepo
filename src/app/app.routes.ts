@@ -19,7 +19,7 @@ const appRoutes: Routes = [
   {path: 'questions', component: QuestionlistComponent},
   {path: 'questions-selected', component: QuestionsSelectedComponent},
   {path: 'login', component: LoginFormComponent},
-  //{path: '', component: LoginFormComponent},
+  // {path: '', component: LoginFormComponent},
   {path: 'quizes', component: QuizFormComponent},
   {path: 'home', component: HomeFormComponent}
 

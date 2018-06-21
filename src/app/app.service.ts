@@ -14,7 +14,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  private userUrl = 'http://172.20.10.2:8080/quiz-manager-webapp/quiz-manager/';
+  private userUrl = 'http://10.41.176.204:8080/quiz-manager-webapp/quiz-manager/';
 
   public getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.userUrl + '/users');
