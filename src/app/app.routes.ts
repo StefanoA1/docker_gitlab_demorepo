@@ -1,6 +1,6 @@
-import {Routes, RouterModule} from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
-import {AppComponent} from './app.component';
+import { AppComponent } from './app.component';
 import { HomeFormComponent } from './components/home-form/home-form.component';
 import { QuestionFormComponent } from './components/question-form/question-form.component';
 import { QuestionlistComponent } from './components/questionlist/questionlist.component';
@@ -11,6 +11,7 @@ import { Question } from './datamodel/question';
 import { QuestionToken } from 'typescript';
 import { Quiz } from './datamodel/quiz';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 // import { QuizToken } from 'typescript';
 
 const appRoutes: Routes = [
@@ -21,7 +22,9 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginFormComponent},
   // {path: '', component: LoginFormComponent},
   {path: 'quizes', component: QuizFormComponent},
-  {path: 'home', component: HomeFormComponent}
+  {path: 'home', component: HomeFormComponent},
+  {path: 'users', component: UserFormComponent},
+  // {path: '', component: UserFormComponent}
 
 
 ];

@@ -13,12 +13,11 @@ import { QuizService } from './services/quiz.service';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { HomeFormComponent } from './components/home-form/home-form.component';
 import { CustomMaterialModule } from './material.module';
-import { AuthenticationService } from './services/authentication.service';
-import { Interceptor } from './services/interceptor';
-import { TokenStorage } from './services/token.storage';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserFormComponent } from './components/user-form/user-form.component';
+import { ApiService } from './api.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -30,24 +29,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     QuestionsSelectedComponent,
     QuizFormComponent,
     LoginFormComponent,
-    HomeFormComponent
+    HomeFormComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
     CustomMaterialModule,
+    HttpClientModule,
     router
   ],
   providers: [
     QuestionService,
     QuizService,
-    AuthenticationService,
-    TokenStorage,
-    {provide: HTTP_INTERCEPTORS,
-    useClass: Interceptor,
-    multi : true}
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,12 +1,12 @@
 export class User {
-  name: String;
-  userName: String;
   id: number;
+  name: String;
+  username: String;
+  password: String;
+  userType: String;
 
-  constructor(name: String, userName: String, id: number) {
-    this.name = name;
-    this.userName = userName;
-    this.id = id;
-
+  constructor(values: Object = {}) {
+    Object.assign(this, values);
   }
+
 }
