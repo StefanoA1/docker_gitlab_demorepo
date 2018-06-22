@@ -17,7 +17,7 @@ export class QuestionsSelectedComponent implements OnInit {
 
   ngOnInit() {
     // this.question1 = new Question(6, 'what is Maven6?', 2, ['industrialization', 'project configuration']);
-    this.available_questions = this.questionService.getAllQuestions();
+    //this.available_questions = this.questionService.getAllQuestions();
     this.selected_questions = [];
     // this.selected_questions.push({id: 6, title: 'what is 6?', difficulty: 3, tags: ['i6', 'p6']});
   }

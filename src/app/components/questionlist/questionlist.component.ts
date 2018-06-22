@@ -15,7 +15,9 @@ export class QuestionlistComponent implements OnInit {
 
   ngOnInit() {
     // initialize "questions"
-    this.questions = this.questionService.getAllQuestions();
+    this.questionService.getAllQuestions().subscribe(data => {
+      this.questions = data;
+    });
   }
 
   goToQuestion() {

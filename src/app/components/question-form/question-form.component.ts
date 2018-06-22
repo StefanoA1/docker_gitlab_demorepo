@@ -14,7 +14,7 @@ export class QuestionFormComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.question = new Question(0, 'test', 1, ['']);
+    //this.question = new Question(0, 'test', 1, ['']);
   }
 
   validate() {

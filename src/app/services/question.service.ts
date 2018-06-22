@@ -1,20 +1,34 @@
 import {Question} from '../datamodel/question';
 import {Injectable} from '@angular/core';
+import {environment} from '../../environments/environment';
+import {MCQChoice} from '../datamodel/mcqchoice';
+import { MCQQuestion } from '../datamodel/mcqquestion';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+
+const API_URL = environment.apiUrl;
 
 @Injectable()
 export class QuestionService {
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  getAllQuestions(): Question[] {
+
+
+  getAllQuestions() {
+    return this.http.get<Question[]>(API_URL + '/questions');
+
     // TODO replace this initialization by a real call to a service
-    return [
-      new Question(1, 'what is Maven 1?', 1, ['industrialization', 'project configuration']),
-      new Question(2, 'what is Hibernate', 1, ['data access', 'orm', 'frameworks', 'java']),
-      new Question(3, 'what is Spring?', 1, ['program configuration', 'frameworks', 'dependency injection']),
-      new Question(4, 'what is Maven 4?', 1, ['industrialization4', 'project configuration']),
-      new Question(5, 'what is Maven 5?', 1, ['industrialization', 'project configuration'])
-    ];
+    /*return [
+      new Question(1, 'what is Maven 1?'),
+      new Question(2, 'what is Hibernate'),
+      new Question(3, 'what is Spring?'),
+      new Question(4, 'what is Maven 4?'),
+      new Question(5, 'what is Maven 5?')
+    ];*/
+  }
+
+  createMCQQuestion(question: MCQQuestion) {
+    return this.http.post<Boolean>(API_URL, '/questions/create');
   }
 
 }

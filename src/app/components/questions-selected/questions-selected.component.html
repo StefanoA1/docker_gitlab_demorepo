@@ -26,7 +26,6 @@
 							[ngClass]="{ odd: odd, even: even }">
 <!-- 							<td>{{question.id}}</td> -->
 							<td>{{question.title}}</td>
-							<td>{{question.difficulty}}</td>
 							<td><button (click)="putInAvailable(question,i)">Remove</button></td>
 						</tr>
 					</tbody>
@@ -55,7 +54,6 @@
 							<!--  -->
 <!-- 							<td>{{question.id}}</td> -->
 							<td>{{question.title}}</td>
-							<td>{{question.difficulty}}</td>
 <!-- 							<td><button (click)="selected_questions.push(question)">Push</button></td> -->
 <!-- 							<td><button (click)="available_questions.splice(i, 1)">Add</button></td> -->
 							<td><button (click)="putInSelected(question, i)">&ensp;Add&ensp;</button></td>

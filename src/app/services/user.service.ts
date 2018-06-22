@@ -21,7 +21,7 @@ export class ApiService {
 
   // API: POST /user
   public createUser(user: User) {
-    return this.http.post<User>(API_URL, '/create');
+    return this.http.post<Boolean>(API_URL, '/create');
   }
 
  // API: POST /user
