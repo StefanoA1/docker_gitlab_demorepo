@@ -3,19 +3,13 @@
 <div>
 	<div>
 		<label for="questionTitle">Please enter the question title</label>
-		<textarea id="questionTitle" [(ngModel)]="question.title"></textarea>
+		<textarea id="questionTitle" ></textarea>
 	</div>
-	<!--  
-	<div>
-		<label for="tags">Tags (separated by comma)</label> 
-		<input type="text"	id="tags" [(ngModel)]="question.tags" />
+	<div id="answers-list"></div>
+	<div id="add-answer-form-placeholder" [hidden]="!showMcqForm">
+		<app-mcqchoice-form></app-mcqchoice-form>
 	</div>
-	<div>
-		<label for="difficulty">Difficulty (from 1 to 5)</label> 
-		<input
-			type="number" id="difficulty" [(ngModel)]="question.difficulty"/>
-	</div>
-	-->
+	<button (click)="displayForm()">Add answer option</button>
 	<button (click)="validate()">Ok!</button>
 
 

@@ -17,6 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { ApiService } from './api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { McqchoiceFormComponent } from './components/mcqchoice-form/mcqchoice-form.component';
+import { QuestiontomcqdataService } from './services/questiontomcqdata.service';
 
 
 
@@ -30,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     QuizFormComponent,
     LoginFormComponent,
     HomeFormComponent,
-    UserFormComponent
+    UserFormComponent,
+    McqchoiceFormComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     QuestionService,
     QuizService,
+    QuestiontomcqdataService,
     ApiService
   ],
   bootstrap: [AppComponent]
