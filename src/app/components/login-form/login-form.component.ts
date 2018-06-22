@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ApiService} from '../../api.service';
+import {User} from '../../datamodel/user';
+import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
 // import {AuthenticationService} from '../../services/authentication.service';
 
@@ -10,33 +12,34 @@ import {MatDialog} from '@angular/material';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor( private router: Router, public dialog: MatDialog) {
+  constructor(private router: Router, public dialog: MatDialog, private api: ApiService) {
   }
-  /*constructor( private router: Router, public dialog: MatDialog,
-    private authenticationService: AuthenticationService ) {
-  }*/
 
   username: string;
   password: string;
+  user: User;
+  userBack: User;
 
   login(): void {
 
-    if ( this.username === 'admin' && this.password === 'admin' ) {
-     this.router.navigate(['users']);
-    } else {
-      alert('Invalid credentials');
+    this.user.username = this.username;
+    this.user.password = this.password;
+    this.api.authUser(this.user).subscribe(data => {
+      this.userBack = data;
+      if (this.username === this.userBack.username && this.password === this.userBack.password) {
+        this.router.navigate(['users']);
+      } else {
+        alert('Invalid credentials');
+      }
     }
+    );
 
-//    this.authenticationService.attemptAuthentication(this.username, this.password).subscribe(
-//      data => {
-//        this.token.saveToken(data.token);
-//        this.router.navigate(['questions']);
-//      }
-//    );
+
 
   }
 
   ngOnInit() {
+    this.user = new User();
   }
 
 }

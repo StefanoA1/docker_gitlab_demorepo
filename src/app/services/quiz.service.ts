@@ -7,7 +7,6 @@ export class QuizService {
   constructor() { }
 
     getAllQuizes(): Quiz[] {
-    // TODO replace for actual Quiz service
     return [
       new Quiz(1, 'Maven Quiz', ['1', '1']),
       new Quiz(2, 'Java Quiz', ['3', '4']),

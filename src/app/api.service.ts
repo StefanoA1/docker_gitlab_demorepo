@@ -21,14 +21,14 @@ export class ApiService {
 
   // API: POST /user
   public createUser(user: User) {
-    return this.http.post<User>(API_URL, '/create');
+    return this.http.post<Boolean>(API_URL + '/create', user);
   }
 
  // API: POST /user
   public authUser(user: User) {
-    return this.http.post<User>(API_URL, '/auth');
+    return this.http.post<User>(API_URL + '/auth', user);
   }
-  
+
 /*
   // API: GET /todos/:id
   public getTodoById(todoId: number) {
