@@ -15,7 +15,7 @@ export class QuizService {
       return this.http.get<Quiz[]>(API_URL + '/quizzes/');
   }
     public getOtherQuestions(id: number) {
-      return this.http.get<Question[]>(API_URL + '/quizzes/except' + id);
+      return this.http.get<Question[]>(API_URL + '/quizzes/except/' + id);
   }
     public createQuiz(quiz: Quiz) {
       return this.http.post<Boolean>(API_URL + '/quizzes/create', quiz);

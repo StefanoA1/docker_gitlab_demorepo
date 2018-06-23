@@ -33,9 +33,9 @@ export class QuestionsSelectedComponent implements OnInit, OnDestroy {
     this.selected_questions = [];
     if (this.currentQuizSubscription == null) {
       this.currentQuizSubscription = this.ds.getData().subscribe(x => {
-        this.quizTitle = x.quiz.name;
+        this.quizTitle = x.name;
         this.isEdit = true;
-        this.quiz = x.quiz;
+        this.quiz = x;
         this.quizService.getOtherQuestions(this.quiz.id).subscribe(data => {
           this.available_questions = data;
           this.selected_questions = this.quiz.questionList;
