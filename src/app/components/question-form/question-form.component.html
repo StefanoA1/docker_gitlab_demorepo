@@ -3,14 +3,32 @@
 <div>
 	<div>
 		<label for="questionTitle">Please enter the question title</label>
-		<textarea id="questionTitle" ></textarea>
+		<textarea id="questionTitle" [(ngModel)]="questionTitle"></textarea>
 	</div>
-	<div id="answers-list"></div>
+	<div id="answers-list">
+		<table>
+			<thead>
+				<tr>
+					<th>Answer text</th>
+					<th>Is a Correct answer?</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let mcqOption of mcqOptionsAdded; let i = index">
+					<td>{{mcqOption.choice}}</td>
+					<td>{{mcqOption.correct}}</td>
+					<td><button (click)="deleteMcqOption(i)">Delete</button></td>
+				</tr>
+
+			</tbody>
+		</table>
+
+	</div>
 	<div id="add-answer-form-placeholder" [hidden]="!showMcqForm">
 		<app-mcqchoice-form></app-mcqchoice-form>
 	</div>
 	<button (click)="displayForm()">Add answer option</button>
-	<button (click)="validate()">Ok!</button>
+	<button (click)="save()">Save!</button>
 
 
 </div>

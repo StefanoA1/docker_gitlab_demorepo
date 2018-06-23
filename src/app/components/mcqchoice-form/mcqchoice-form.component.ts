@@ -14,7 +14,7 @@ export class McqchoiceFormComponent implements OnInit {
   constructor(private ds: QuestiontomcqdataService) {}
 
   ngOnInit() {
-
+    this.correct = false;
   }
 
   saveToQuestion() {

@@ -1,8 +1,7 @@
 export class Question {
   id: number;
   title: string;
-  constructor(id: number, title: string) {
-    this.id = id;
-    this.title = title;
+  constructor(values: Object = {}) {
+    Object.assign(this, values);
   }
 }
