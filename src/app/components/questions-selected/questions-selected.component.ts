@@ -27,6 +27,8 @@ export class QuestionsSelectedComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.isEdit = false;
+    this.available_questions = [];
+    this.selected_questions = [];
     if (this.currentQuizSubscription == null) {
       this.currentQuizSubscription = this.ds.getData().subscribe(x => {
         this.quizTitle = x.quiz.title;
@@ -35,7 +37,7 @@ export class QuestionsSelectedComponent implements OnInit, OnDestroy {
       });
     }
 
-    this.quizService.getOtherQuestions(this.quiz).subscribe(data => {
+    this.quizService.getOtherQuestions(this.quiz.id).subscribe(data => {
       this.available_questions = data;
     });
 
