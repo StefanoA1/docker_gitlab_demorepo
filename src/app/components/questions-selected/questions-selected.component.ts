@@ -1,6 +1,6 @@
 import {Question} from '../../datamodel/question';
 import {Quiz} from '../../datamodel/quiz';
-import { QuestionService } from '../../services/question.service';
+import {QuestionService} from '../../services/question.service';
 import {QuizService} from '../../services/quiz.service';
 import {QuiztoeditService} from '../../services/quiztoedit.service';
 import {Component, OnInit, Input, OnDestroy} from '@angular/core';
@@ -33,24 +33,24 @@ export class QuestionsSelectedComponent implements OnInit, OnDestroy {
     this.selected_questions = [];
     if (this.currentQuizSubscription == null) {
       this.currentQuizSubscription = this.ds.getData().subscribe(x => {
-        this.quizTitle = x.quiz.title;
+        this.quizTitle = x.quiz.name;
         this.isEdit = true;
         this.quiz = x.quiz;
+        this.quizService.getOtherQuestions(this.quiz.id).subscribe(data => {
+          this.available_questions = data;
+          this.selected_questions = this.quiz.questionList;
+        });
       });
     }
-    if (this.quiz != null && this.quiz.id != null) {
-      this.quizService.getOtherQuestions(this.quiz.id).subscribe(data => {
-        this.available_questions = data;
-      });
 
-    } else {
-      this.questionService.getAllQuestions().subscribe(data => {
+    this.questionService.getAllQuestions().subscribe(data => {
       this.available_questions = data;
     });
-    }
 
 
-    this.selected_questions = this.quiz != null && this.quiz.questions != null ? this.quiz.questions : [];
+
+    this.selected_questions = this.quiz != null && this.quiz.questionList != null ? this.quiz.questionList : [];
+    this.quiz = new Quiz({});
 
   }
 
@@ -60,18 +60,18 @@ export class QuestionsSelectedComponent implements OnInit, OnDestroy {
 
   createQuiz() {
 
-    this.quiz.questions = this.selected_questions;
     if (this.isEdit) {
-      this.quiz.title = this.quizTitle;
+      this.quiz.name = this.quizTitle;
+      this.quiz.questionList = this.selected_questions;
       this.quizService.updateQuiz(this.quiz).subscribe(data => {
         this.router.navigate(['quizes']);
-        this.ds.clearData();
+        //this.ds.clearData();
       });
     } else {
-      const quiz = new Quiz(null, this.quizTitle, null);
+      const quiz = new Quiz({name: this.quizTitle, questionList: this.selected_questions});
       this.quizService.createQuiz(quiz).subscribe(data => {
         this.router.navigate(['quizes']);
-        this.ds.clearData();
+        //this.ds.clearData();
       });
     }
   }
