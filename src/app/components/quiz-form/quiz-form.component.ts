@@ -42,6 +42,7 @@ export class QuizFormComponent implements OnInit {
   createNewQuiz() {
     this.router.navigate(['questions-selected']);
     this.ds.sendQuiz(new Quiz(null, null, null));
+    
   }
 
   deleteQuiz(quiz: Quiz, index: number) {
