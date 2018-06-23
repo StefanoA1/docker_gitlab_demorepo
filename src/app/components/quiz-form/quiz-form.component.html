@@ -4,21 +4,24 @@
 		<tr>
 			<th>id</th>
 			<th>title</th>
-			<th>questions</th>
+<!-- 			<th>questions</th> -->
 			<th>actions</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let quiz of quizes">
+		<tr *ngFor="let quiz of quizes;  let i = index">
 			<td>{{quiz.id}}</td>
 			<td>{{quiz.title}}</td>
-			<td>{{quiz.questions}}</td>
-			<td><button>Edit</button><button>Delete</button></td>
+<!-- 			<td>If needed add questionList titles here</td> -->
+			<td>
+				<button mat-raised-button (click)="editQuiz(quiz)" color="primary">Edit</button>
+				<button mat-raised-button (click)="deleteQuiz(quiz, i)" color="primary">Delete</button>
+			</td>
 		</tr>
 	
 	</tbody>
 
 
 </table>
-
-<button (click) = "editQuiz()">Create a new question</button>
+<button mat-raised-button (click)="createNewQuiz()" color="primary">Create a new Quiz</button>
+<!-- <button (click) = "editQuiz()">Create a new question</button> -->

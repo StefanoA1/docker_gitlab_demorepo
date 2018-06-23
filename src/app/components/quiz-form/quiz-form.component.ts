@@ -1,7 +1,9 @@
 import { Quiz } from '../../datamodel/quiz';
 import { QuizService } from '../../services/quiz.service';
-import { Component, OnInit } from '@angular/core';
+import { QuiztoeditService } from '../../services/quiztoedit.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-quiz-form',
@@ -11,17 +13,41 @@ import { Router } from '@angular/router';
 export class QuizFormComponent implements OnInit {
 
   quizes: Quiz[];
+//  currentQuizSubscription: Subscription;
+//  questionListSubscription: Subscription;
 
-  constructor(private quizService: QuizService, private router: Router) { }
+  constructor(private quizService: QuizService, private ds: QuiztoeditService, private router: Router) { }
 
   ngOnInit() {
     // Initialize quizes
-    this.quizes = this.quizService.getAllQuizes();
+    this.quizes = [];
+    this.quizService.getAllQuizes().subscribe(data => {
+      this.quizes = data;
+    });
+
   }
 
-   editQuiz() {
+//  ngOnDestroy() {
+//    this.currentQuizSubscription.unsubscribe();
+//    this.questionListSubscription.unsubscribe();
+//  }
+
+  editQuiz(quiz: Quiz) {
     this.router.navigate(['questions-selected']);
-    // this.router.navigate(['form']);
+    this.quizService.getQuizById(quiz).subscribe(data => {
+      this.ds.sendQuiz(quiz);
+    });
+  }
+
+  createNewQuiz() {
+    this.router.navigate(['questions-selected']);
+    this.ds.sendQuiz(new Quiz(null, null, null));
+  }
+
+  deleteQuiz(quiz: Quiz, index: number) {
+    this.quizService.deleteQuiz(quiz).subscribe(data => {
+      this.quizes.splice(index, 1);
+    });
   }
 
 }
