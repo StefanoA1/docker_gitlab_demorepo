@@ -20,7 +20,7 @@ export class HomeFormComponent implements OnInit {
 
   goToQuestions() {
     // this.router.navigate(['questions-selected']);
-    this.router.navigate(['new-question']);
+    this.router.navigate(['questions']);
   }
 
 }
