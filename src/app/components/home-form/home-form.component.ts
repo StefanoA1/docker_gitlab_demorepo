@@ -14,13 +14,14 @@ export class HomeFormComponent implements OnInit {
   }
 
   goToQuizes() {
-    // this.router.navigate(['questions-selected']);
     this.router.navigate(['quizes']);
   }
 
   goToQuestions() {
-    // this.router.navigate(['questions-selected']);
     this.router.navigate(['questions']);
+  }
+  goToUsers() {
+    this.router.navigate(['users']);
   }
 
 }

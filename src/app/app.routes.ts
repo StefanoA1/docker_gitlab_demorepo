@@ -17,11 +17,10 @@ import { UserListComponent } from './components/user-list/user-list.component';
 
 const appRoutes: Routes = [
   {path: 'new-question', component: QuestionFormComponent},
-  {path: '', component: QuestionlistComponent},
   {path: 'questions', component: QuestionlistComponent},
   {path: 'questions-selected', component: QuestionsSelectedComponent},
   {path: 'login', component: LoginFormComponent},
-  // {path: '', component: LoginFormComponent},
+  {path: '', component: LoginFormComponent},
   {path: 'quizes', component: QuizFormComponent},
   {path: 'home', component: HomeFormComponent},
   {path: 'users', component: UserListComponent},

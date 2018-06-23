@@ -18,15 +18,6 @@ export class UserListComponent implements OnInit {
   constructor(private router: Router, private api: ApiService) {
   }
   ngOnInit() {
-    this.user1 = new User();
-    this.user1.name = 'PEPE';
-    this.user1.username = 'PEPE';
-    this.user1.password = 'PEPE';
-    this.user1.userType = 'ADMIN';
-    this.api.createUser(this.user1).subscribe(data => {
-      this.flag = data;
-    }
-    );
     this.api.getAllUsers().subscribe(  data => {
           this.users = data;
       }

@@ -38,7 +38,7 @@ export class UserFormComponent implements OnInit {
       });
       this.api.createUser(user).subscribe(data => {
         if (data === true) {
-          this.router.navigate(['users']);
+          this.router.navigate(['login']);
         } else {
           alert('There was an error on the server side');
         }

@@ -20,26 +20,27 @@ export class LoginFormComponent implements OnInit {
   user: User;
   userBack: User;
 
+  ngOnInit() {
+    this.user = new User();
+  }
+
   login(): void {
 
     this.user.username = this.username;
     this.user.password = this.password;
     this.api.authUser(this.user).subscribe(data => {
       this.userBack = data;
-      if (this.username === this.userBack.username && this.password === this.userBack.password) {
+      if (this.userBack !== null && this.username === this.userBack.username && this.password === this.userBack.password) {
         this.router.navigate(['users']);
       } else {
         alert('Invalid credentials');
       }
     }
     );
-
-
-
   }
 
-  ngOnInit() {
-    this.user = new User();
+  goToCreateUser() {
+    this.router.navigate(['create-user']);
   }
 
 }
