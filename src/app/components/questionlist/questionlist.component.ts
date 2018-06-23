@@ -22,7 +22,7 @@ export class QuestionlistComponent implements OnInit {
   }
 
   goToQuestion() {
-    this.router.navigate(['questions-selected']);
+    this.router.navigate(['new-question']);
     // this.router.navigate(['form']);
   }
 
