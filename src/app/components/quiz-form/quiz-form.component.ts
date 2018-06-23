@@ -13,8 +13,6 @@ import { Subscription } from 'rxjs/Subscription';
 export class QuizFormComponent implements OnInit {
 
   quizes: Quiz[];
-//  currentQuizSubscription: Subscription;
-//  questionListSubscription: Subscription;
 
   constructor(private quizService: QuizService, private ds: QuiztoeditService, private router: Router) { }
 
@@ -27,10 +25,6 @@ export class QuizFormComponent implements OnInit {
 
   }
 
-//  ngOnDestroy() {
-//    this.currentQuizSubscription.unsubscribe();
-//    this.questionListSubscription.unsubscribe();
-//  }
 
   editQuiz(quiz: Quiz) {
     this.router.navigate(['questions-selected']);
@@ -42,7 +36,7 @@ export class QuizFormComponent implements OnInit {
   createNewQuiz() {
     this.router.navigate(['questions-selected']);
     this.ds.sendQuiz(new Quiz(null, null, null));
-    
+
   }
 
   deleteQuiz(quiz: Quiz, index: number) {
