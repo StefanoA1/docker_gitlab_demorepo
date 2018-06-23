@@ -1,10 +1,11 @@
-import { Question } from '../../datamodel/question';
-import { Quiz } from '../../datamodel/quiz';
-import { QuizService } from '../../services/quiz.service';
-import { QuiztoeditService } from '../../services/quiztoedit.service';
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import {Question} from '../../datamodel/question';
+import {Quiz} from '../../datamodel/quiz';
+import { QuestionService } from '../../services/question.service';
+import {QuizService} from '../../services/quiz.service';
+import {QuiztoeditService} from '../../services/quiztoedit.service';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
+import {Router} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-questions-selected',
@@ -22,7 +23,8 @@ export class QuestionsSelectedComponent implements OnInit, OnDestroy {
   quiz: Quiz;
 
   // question1: Question;
-  constructor(private quizService: QuizService, private ds: QuiztoeditService, private router: Router) {}
+  constructor(private quizService: QuizService, private questionService: QuestionService,
+    private ds: QuiztoeditService, private router: Router) {}
 
   ngOnInit() {
 
@@ -36,10 +38,17 @@ export class QuestionsSelectedComponent implements OnInit, OnDestroy {
         this.quiz = x.quiz;
       });
     }
+    if (this.quiz.id != null) {
+      this.quizService.getOtherQuestions(this.quiz.id).subscribe(data => {
+        this.available_questions = data;
+      });
 
-    this.quizService.getOtherQuestions(this.quiz.id).subscribe(data => {
+    } else {
+      this.questionService.getAllQuestions().subscribe(data => {
       this.available_questions = data;
     });
+    }
+
 
     this.selected_questions = this.quiz.questions;
 
