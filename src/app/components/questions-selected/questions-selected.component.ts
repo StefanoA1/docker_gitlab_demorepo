@@ -38,7 +38,7 @@ export class QuestionsSelectedComponent implements OnInit, OnDestroy {
         this.quiz = x.quiz;
       });
     }
-    if (this.quiz.id != null) {
+    if (this.quiz != null && this.quiz.id != null) {
       this.quizService.getOtherQuestions(this.quiz.id).subscribe(data => {
         this.available_questions = data;
       });
@@ -50,7 +50,7 @@ export class QuestionsSelectedComponent implements OnInit, OnDestroy {
     }
 
 
-    this.selected_questions = this.quiz.questions;
+    this.selected_questions = this.quiz != null && this.quiz.questions != null ? this.quiz.questions : [];
 
   }
 
