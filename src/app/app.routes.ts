@@ -12,6 +12,7 @@ import { QuestionToken } from 'typescript';
 import { Quiz } from './datamodel/quiz';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 // import { QuizToken } from 'typescript';
 
 const appRoutes: Routes = [
@@ -23,8 +24,8 @@ const appRoutes: Routes = [
   // {path: '', component: LoginFormComponent},
   {path: 'quizes', component: QuizFormComponent},
   {path: 'home', component: HomeFormComponent},
-  {path: 'users', component: UserFormComponent},
-  // {path: '', component: UserFormComponent}
+  {path: 'users', component: UserListComponent},
+  {path: 'create-user', component: UserFormComponent}
 
 
 ];

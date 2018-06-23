@@ -1,8 +1,8 @@
-import { ApiService } from '../../api.service';
-import { User } from '../../datamodel/user';
-import { Component, OnInit } from '@angular/core';
+import {ApiService} from '../../api.service';
+import {User} from '../../datamodel/user';
+import {Component, OnInit} from '@angular/core';
 // import {MatTableDataSource} from '@angular/material';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -11,27 +11,41 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent implements OnInit {
-  users: User[];
-  flag: Boolean;
-  user1: User;
+  name: string;
+  username: string;
+  password: string;
+  userType: string;
+  passwordConfirm: string;
 
 
   constructor(private router: Router, private api: ApiService) {
   }
   ngOnInit() {
-    this.user1 = new User();
-    this.user1.name = 'PEPE';
-    this.user1.username = 'PEPE';
-    this.user1.password = 'PEPE';
-    this.user1.userType = 'ADMIN';
-    this.api.createUser(this.user1).subscribe(data => {
-      this.flag = data;
+    this.name = '';
+    this.username = '';
+    this.password = '';
+    this.userType = 'STUDENT';
+    this.passwordConfirm = '';
+  }
+
+  createUser() {
+    if (this.password !== null && this.password === this.passwordConfirm) {
+      const user = new User({
+        username: this.username,
+        name: this.name,
+        password: this.password,
+        userType: this.userType
+      });
+      this.api.createUser(user).subscribe(data => {
+        if (data === true) {
+          this.router.navigate(['users']);
+        } else {
+          alert('There was an error on the server side');
+        }
+      });
+    } else {
+      alert('Password and Password confirmation dont match');
     }
-    );
-    this.api.getAllUsers().subscribe(  data => {
-          this.users = data;
-      }
-    );
   }
 
 }
