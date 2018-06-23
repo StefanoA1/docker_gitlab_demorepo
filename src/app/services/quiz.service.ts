@@ -12,7 +12,7 @@ export class QuizService {
   constructor(private http: HttpClient) { }
 
     public getAllQuizes() {
-      return this.http.get<Quiz[]>(API_URL + '/quizzes');
+      return this.http.get<Quiz[]>(API_URL + '/quizzes/');
   }
     public getOtherQuestions(id: number) {
       return this.http.get<Question[]>(API_URL + '/quizzes/except' + id);
