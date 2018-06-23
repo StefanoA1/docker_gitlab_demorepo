@@ -1,38 +1,74 @@
 import { Question } from '../../datamodel/question';
-import { QuestionService } from '../../services/question.service';
-import { Component, OnInit } from '@angular/core';
+import { Quiz } from '../../datamodel/quiz';
+import { QuizService } from '../../services/quiz.service';
+import { QuiztoeditService } from '../../services/quiztoedit.service';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-questions-selected',
   templateUrl: './questions-selected.component.html',
   styleUrls: ['./questions-selected.component.css']
 })
-export class QuestionsSelectedComponent implements OnInit {
+export class QuestionsSelectedComponent implements OnInit, OnDestroy {
 
+  isEdit: Boolean;
+  currentQuizSubscription: Subscription;
+
+  quizTitle: string;
   available_questions: Question[];
   selected_questions: Question[];
+  quiz: Quiz;
+
   // question1: Question;
-  constructor(private questionService: QuestionService, private router: Router) {}
+  constructor(private quizService: QuizService, private ds: QuiztoeditService, private router: Router) {}
 
   ngOnInit() {
-    // this.question1 = new Question(6, 'what is Maven6?', 2, ['industrialization', 'project configuration']);
-    //this.available_questions = this.questionService.getAllQuestions();
-    this.selected_questions = [];
-    // this.selected_questions.push({id: 6, title: 'what is 6?', difficulty: 3, tags: ['i6', 'p6']});
+
+    this.isEdit = false;
+    if (this.currentQuizSubscription == null) {
+      this.currentQuizSubscription = this.ds.getData().subscribe(x => {
+        this.quizTitle = x.quiz.title;
+        this.isEdit = true;
+        this.quiz = x.quiz;
+      });
+    }
+
+    this.quizService.getOtherQuestions(this.quiz).subscribe(data => {
+      this.available_questions = data;
+    });
+
+    this.selected_questions = this.quiz.questions;
+
   }
 
-  goToQuestion() {
-    // this.router.navigate(['questions-selected']);
-    this.router.navigate(['form']);
+  ngOnDestroy() {
+    this.currentQuizSubscription.unsubscribe();
+  }
+
+  createQuiz() {
+
+    this.quiz.questions = this.selected_questions;
+    if (this.isEdit) {
+      this.quiz.title = this.quizTitle;
+      this.quizService.updateQuiz(this.quiz).subscribe(data => {
+        this.router.navigate(['quizes']);
+        this.ds.clearData();
+      });
+    } else {
+      const quiz = new Quiz(null, this.quizTitle, null);
+      this.quizService.createQuiz(quiz).subscribe(data => {
+        this.router.navigate(['quizes']);
+        this.ds.clearData();
+      });
+    }
   }
 
   putInSelected(question, i) {
     // console.log('1');
-    // this.selected_questions.push(Object.assign({}, question));
     this.selected_questions.push(question);
     this.available_questions.splice(i, 1);
-    // this.available_questions.push(this.question1);
   }
 
   putInAvailable(question, i) {

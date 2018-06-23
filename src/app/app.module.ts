@@ -19,6 +19,7 @@ import { ApiService } from './api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { McqchoiceFormComponent } from './components/mcqchoice-form/mcqchoice-form.component';
 import { QuestiontomcqdataService } from './services/questiontomcqdata.service';
+import { QuiztoeditService } from './services/quiztoedit.service';
 
 
 
@@ -47,6 +48,7 @@ import { QuestiontomcqdataService } from './services/questiontomcqdata.service';
     QuestionService,
     QuizService,
     QuestiontomcqdataService,
+    QuiztoeditService,
     ApiService
   ],
   bootstrap: [AppComponent]
